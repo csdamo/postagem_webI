@@ -1,0 +1,48 @@
+{
+    "routes": [
+        {
+            "method": "GET",
+            "url": "https://localhost:4567/postagem",
+            "descricao": "Busca todas as postagens armazenadas"
+        },
+        {
+            "method": "GET",
+            "url": "https://localhost:4567/postagem/1",
+            "descricao": "Busca a postagem com id = 1"
+        },
+        {
+            "method": "GET",
+            "url": "https://localhost:4567/postagem?title=abc",
+            "descricao": "Busca todas as postagens que contém o termo abc em seu título, não importando a posição e se está escrito em letras maiúsculas ou minúsculas."
+        },
+        {
+            "method": "GET",
+            "url": "https://localhost:4567/postagem?start=0&limit=5",
+            "descricao": "Busca 5 postagens a partir da posição 0 dos dados armazenados"
+        },
+        {
+            "method": "PUT",
+            "url": "https://localhost:4567/postagem/1",
+            "descricao": "Atualiza uma postagem com id = 1 no servidor"
+        },
+        {
+            "method": "POST",
+            "url": "https://localhost:4567/postagem",
+            "descricao": "Insere uma postagem no servidor"
+        },
+        {
+            "method": "DELETE",
+            "url": "https://localhost:4567/postagem/25",
+            "descricao": "Apaga a postagem com id = 25 do servidor"
+        },
+        {
+            "method": "OPTIONS",
+            "url": "https://localhost:4567/postagem",
+            "descricao": "Mostra as opções disponíveis no servidor"
+        }
+    ]
+}
+
+
+  
+  
