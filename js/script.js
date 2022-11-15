@@ -15,7 +15,7 @@ window.onload = function(){
 }
 
 // método para chamar rota api com ajax
-function runAjax(post_url, request_method, form_data){
+function runAjax(post_url, request_method, form_data=""){
   $.ajax({
 		url : post_url,
 		type: request_method,
@@ -66,10 +66,10 @@ $("#form_id").submit(function(event){
 $("#button_id").click(function(event){
 	event.preventDefault(); //prevent default action 
   
-  let id = $("#item_id").val("");
-  let title = $("#title_id").val("");
-  let categories = $("#categories_id").val("");
-  let content = $("#content_id").val("");
+  $("#item_id").val("");
+  $("#title_id").val("");
+  $("#categories_id").val("");
+  $("#content_id").val("");
 
   $('#formMessageModal').modal('show');
 });
@@ -80,12 +80,13 @@ function sendData(postagem){
   for (var i = 0; i < postagem.length; i++) {
 
     linha += "\
-      <tr class=\"\" onclick='abrirModal(" + JSON.stringify(postagem[i]) + ")'> \
+      <tr class=\"\"> \
         <th scope=\"row\">" + postagem[i].id + "</th> \
-        <td>" + postagem[i].title + "</td> \
-        <td>" + postagem[i].categories + "</td> \
-        <td>" + postagem[i].content + "</td> \
-        <td>" + postagem[i].version + "</td> \
+        <td onclick='abrirModal(" + JSON.stringify(postagem[i]) + ")'>" + postagem[i].title + "</td> \
+        <td onclick='abrirModal(" + JSON.stringify(postagem[i]) + ")'>" + postagem[i].categories + "</td> \
+        <td onclick='abrirModal(" + JSON.stringify(postagem[i]) + ")'>" + postagem[i].content + "</td> \
+        <td onclick='abrirModal(" + JSON.stringify(postagem[i]) + ")'>" + postagem[i].version + "</td> \
+        <td onclick='deletePost(" + JSON.stringify(postagem[i]) + ")'><i class=\"bi bi-x-lg\"></i></i></td> \
       </tr>\n"
   }
   tabela.innerHTML = linha;
@@ -125,13 +126,29 @@ function getPosts(postagem = -1, titulo = "", metodo="GET", inicio=0, limite=0, 
 }
 
 function abrirModal(postagem) {
-
-  console.log(postagem.id);
-
-  let id = $("#item_id").val(postagem.id);
-  let title = $("#title_id").val(postagem.title);
-  let categories = $("#categories_id").val(postagem.categories);
-  let content = $("#content_id").val(postagem.content);
+  $("#item_id").val(postagem.id);
+  $("#title_id").val(postagem.title);
+  $("#categories_id").val(postagem.categories);
+  $("#content_id").val(postagem.content);
   $('#formMessageModal').modal('show');
-
 }
+
+function deletePost(postagem){
+  $("#post_id").val(postagem.id)
+  $("#confirmModal").modal('show');
+};
+
+$("#confirmOk").on("click", function(){
+  let post_id = $("#post_id").val()
+  let url = 'https://localhost:4567/postagem';
+  let request_method = "DELETE";
+  let delete_url = url + "/" + post_id
+  runAjax(delete_url, request_method)
+  $("#confirmModal").modal('hide');
+  console.log("Deletado com sucesso")
+});
+
+$("#confirmCancel").on("click", function(){
+  console.log("Cancela")
+  $("#confirmModal").modal('hide');
+});

@@ -9,6 +9,8 @@
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
 	<title></title>
 </head>
 <body>
@@ -26,6 +28,7 @@
 							<th scope="col">Categoria</th>
 							<th scope="col">Conteúdo</th>
 							<th scope="col">Versão</th>
+							<th scope="col"></th>
 						</tr>
 					</thead>
 					<tbody id="id_tbody">
@@ -41,7 +44,7 @@
 		</button>
 	</main>
 
-	<!-- Modal -->
+	<!-- Form Modal -->
 	<div class="modal fade" id="formMessageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -69,6 +72,26 @@
 							<button type="submit" id="submitButton" class="btn btn-dark">Enviar <i class="fa fa-send-o"></i></button>
 						</div>
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Confirm Modal -->
+	<div class="modal" id="confirmModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Delete</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				  </div>
+				<div class="modal-body" id="confirmMessage">
+					<input type="hidden" id="post_id" value="">
+					<p>Você tem certez que deseja deletar o post</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" id="confirmCancel">Cancel</button>
+					<button type="button" class="btn btn-danger" id="confirmOk">Sim</button>
 				</div>
 			</div>
 		</div>
