@@ -45,6 +45,7 @@ $("#form_id").submit(function(event){
 
   getPosts(post_id, request_method, "", 0, 0, form_data)
   $('#formMessageModal').modal('hide');
+  setTimeout(getPosts, 70)
 });
 
 $("#bnt_openModalPost").click(function(event){
@@ -101,6 +102,7 @@ function getPosts(post_id = -1, method="GET", searchTerm = "", start=0, limit=0,
       })
       .done(function(resposne) {
         console.log("success");
+        console.log(resposne);
         sendData(resposne);
         // document.getElementById("resposta").innerHTML = blog.title;
       })
@@ -133,6 +135,7 @@ $("#confirmOk").on("click", function(){
   
   $("#confirmModal").modal('hide');
   console.log("Deletado com sucesso")
+  getPosts()
 });
 
 $("#confirmCancel").on("click", function(){
