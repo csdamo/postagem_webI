@@ -1,19 +1,16 @@
 window.onload = function(){
 
-  console.log("Busca todas postagens");
-  obterPostagens();
+  //console.log("Busca todas postagens");
+  getPosts();
 
-  console.log("Busca postagem 3");
-  obterPostagens(3);
+  // console.log("Busca postagem 3");
+  // getPosts(3);
 
-  console.log("Busca postagem sábado");
-  obterPostagens(-1, "sábado");
+  // console.log("Busca postagem sábado");
+  // getPosts(-1, "sábado");
 
-  console.log("Busca 5 primeiras postages");
-  obterPostagens(-1, "", "GET", 0, 5);
-
-  // console.log("Insere postagem");
-  // obterPostagens(-1, "", "POST", 0, 0, {titulo: "Teste", conteudo: "Teste", categorias: "Teste"});
+  // console.log("Busca 5 primeiras postages");
+  // getPosts(-1, "", "GET", 0, 5);
 
 }
 
@@ -63,10 +60,38 @@ $("#form_id").submit(function(event){
   let form_data = JSON.stringify(body);
 
   runAjax(post_url, request_method, form_data)
-
+  $('#formMessageModal').modal('hide');
 });
 
-function obterPostagens(postagem = -1, titulo = "", metodo="GET", inicio=0, limite=0, data){
+$("#button_id").click(function(event){
+	event.preventDefault(); //prevent default action 
+  
+  let id = $("#item_id").val("");
+  let title = $("#title_id").val("");
+  let categories = $("#categories_id").val("");
+  let content = $("#content_id").val("");
+
+  $('#formMessageModal').modal('show');
+});
+
+function sendData(postagem){
+  let tabela = document.getElementById("id_tbody");
+  linha = ""
+  for (var i = 0; i < postagem.length; i++) {
+
+    linha += "\
+      <tr class=\"\" onclick='abrirModal(" + JSON.stringify(postagem[i]) + ")'> \
+        <th scope=\"row\">" + postagem[i].id + "</th> \
+        <td>" + postagem[i].title + "</td> \
+        <td>" + postagem[i].categories + "</td> \
+        <td>" + postagem[i].content + "</td> \
+        <td>" + postagem[i].version + "</td> \
+      </tr>\n"
+  }
+  tabela.innerHTML = linha;
+}
+
+function getPosts(postagem = -1, titulo = "", metodo="GET", inicio=0, limite=0, data){
 
     let url = 'https://localhost:4567/postagem';
 
@@ -88,14 +113,25 @@ function obterPostagens(postagem = -1, titulo = "", metodo="GET", inicio=0, limi
       })
       .done(function(postagem) {
         console.log("success");
-        console.log(postagem);
+        sendData(postagem);
         // document.getElementById("resposta").innerHTML = blog.title;
       })
       .fail(function(erro) {
         console.log("erro", erro);
       })
       .always(function() {
-        console.log("complete");
+        console.log("complete")
       });
+}
+
+function abrirModal(postagem) {
+
+  console.log(postagem.id);
+
+  let id = $("#item_id").val(postagem.id);
+  let title = $("#title_id").val(postagem.title);
+  let categories = $("#categories_id").val(postagem.categories);
+  let content = $("#content_id").val(postagem.content);
+  $('#formMessageModal').modal('show');
 
 }
