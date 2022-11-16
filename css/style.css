@@ -1,0 +1,14 @@
+p, label {
+    font-family: Arial, Inter, -apple-system, "system-ui", Roboto, "Helvetica Neue", Helvetica, Noto, Ubuntu, "Segoe UI", sans-serif;
+    line-height: 110%;
+}
+
+body {
+    margin: 0;
+}
+
+.cabecalho {
+    color: white;
+    width: 133px;
+    text-align: center;
+}
