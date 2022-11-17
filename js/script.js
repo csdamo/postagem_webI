@@ -1,7 +1,7 @@
 window.onload = function(){
 
   //console.log("Busca todas postagens");
-  getPosts();
+  getPosts(-1, "GET", "", 0, 0, "");
 
   // console.log("Busca postagem 3");
   // getPosts(3);
@@ -79,7 +79,7 @@ function sendData(data){
   table.innerHTML = linha;
 }
 
-function getPosts(post_id = -1, method="GET", searchTerm = "", start=0, limit=0, data){
+function getPosts(post_id = -1, method="GET", searchTerm = "", start=0, limit=0, data=""){
 
     let url = 'https://localhost:4567/postagem';
 
@@ -142,3 +142,19 @@ $("#confirmCancel").on("click", function(){
   console.log("Cancela")
   $("#confirmModal").modal('hide');
 });
+
+
+$("#search_id").bind('change keyup', function() {
+
+  let searchTerm =  $("#search_id").val();
+  let post_id = -1;
+  let method="GET";
+
+  getPosts(post_id, method, searchTerm)
+})
+
+
+$("#length_id").on("change", function(){
+  console.log("njgknbkmv,çc.~x;")
+})
+
