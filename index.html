@@ -10,6 +10,9 @@
 	<!-- Icon Bootstrap -->	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
+	<!-- Local CSS -->
+	<link rel=stylesheet href="./css/style.css" type="text/css">
+
 	<title></title>
 </head>
 <body>
@@ -21,54 +24,46 @@
 	</header>
 	
 	<main class="container">
-		<section class="container" id="user_options">
-			<div class="">
-				<label>Mostrar
-					<select id="length_id" name="length" class="">
+		<section class="container-fluid text-center" id="user_options">
+			<div class="row row-cols-3">
+				<div class="col-sm-12 col-md-4 form-group row" id="length_menu">	
+					<label class="col-sm-6 col-form-label" for="length_id">Rregistros por página</label>
+					<select id="length_id" name="length" class="form-select">
 						<option value="5">5</option>
 						<option value="10">10</option>
 						<option value="25">25</option>
 						<option value="50">50</option>
-					</select> registros por página
-				</label>
-			</div>
-			<div class="">
-				<form>
-					<input type="search" id="search_id" name="search" placeholder="Pesquisar...">
-					<button type="submit" class="btn"><i class="bi bi-search"></i></button>
-			  	</form>
+					</select> 
+				</div>
+				<div class="col-sm-12 col-md-4" id="button_add">
+					<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#formMessageModal" id="bnt_openModalPost" data-bs-whatever="@mdo"> 
+						<i class="bi bi-plus-circle-fill" id="plus"></i>
+					</button>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="d-flex form-inputs option_form" id="search_form_div">
+						<input class="form-control" id="search_id" name="search" placeholder="Pesquisar...">
+						<i class="bi bi-search"></i>
+					</div>
+				</div>
 			</div>
 		</section>
-		<section id="button_add">
-			<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#formMessageModal" id="bnt_openModalPost" data-bs-whatever="@mdo"> 
-				<i class="bi bi-plus-circle-fill" style="font-size: 2rem;"></i>
-			</button>
-		</section><br>
-		<article id="table" class="">
-			<div id="div_table" class="table">
-				<table id="id_form" class="table table-dark table-hover">
-					<thead id="id_thead">
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Título</th>
-							<th scope="col">Categoria</th>
-							<th scope="col">Conteúdo</th>
-							<th scope="col">Versão</th>
-							<th scope="col"></th>
-						</tr>
-					</thead>
-					<tbody id="id_tbody">
-					</tbody>
-				</table>
-			</div>
+		<br>
+		<article id="data_id" class="">
+
 		</article>
-		<div class="" id="paginate">
-			<!-- <a href="#" class="" id="previous">Primeiros</a> -->
-			<span id="pages_id">
-				
-			</span>
-			<!-- <a href="#" class="" id="next">Próximo</a> -->
-		</div>
+		<section id="section_page">
+			<div class="" id="paginate">
+				<nav aria-label="...">
+					<!-- <a href="#" class="" id="previous">Primeiros</a> -->
+					<ul id="pages_id" class="pagination pagination-sm"></ul>
+					
+					</ul>
+					<!-- <a href="#" class="" id="next">Próximo</a> -->
+				</nav>
+			</div>
+		</section>
+		
 	</main>
 
 	<!-- Form Modal -->
@@ -96,7 +91,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-							<button type="submit" id="submitButton" class="btn btn-dark">Enviar <i class="bi bi-send"></i></button>
+							<button type="submit" id="submitButton" class="btn button_orange">Enviar <i class="bi bi-send"></i></button>
 						</div>
 					</form>
 				</div>

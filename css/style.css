@@ -12,3 +12,57 @@ body {
     width: 133px;
     text-align: center;
 }
+
+/*Page Menu Length*/ 
+#length_menu {
+    position:relative;
+}
+
+#length_menu #length_id {
+    width:80px;
+    height: 40px;
+}
+
+/* Serach Field */
+#search_form_div {
+    position:relative;
+}
+#search_form_div #search_id{
+    height:40px;
+}
+
+#search_form_div #search_id:focus{
+    box-shadow:none;
+    border:1px solid #000;
+}
+
+#search_form_div i{
+    position:absolute;
+    right:10px;
+    top:8px;
+}
+
+/* button */
+#plus {
+   font-size: 3rem;
+   color: #e55000; 
+}
+
+#plus:hover {
+    color: #fe5900;
+} 
+
+.button_orange {
+    background-color: #e55000;
+    color: aliceblue; 
+ }
+
+/* Pagination */
+.page-link {
+    color: #e55000;
+}
+
+.page-link:hover {
+    color: #ff5900;
+    background-color: #ffb48b;
+}

@@ -58,7 +58,7 @@ function writePage(data_length){
   let line = ""
   
   for (var i = 0; i < pages; i++) {
-    line += "<a href=\"#\" onclick='changePage(" + i + ")' >" + (i + 1) + "</a>"
+    line += "<li class=\"page-item\"><a onclick='changePage(" + i + ")' id=\"" + i + " \" class=\"page-link\" href=\"#pages_id\">" + (i + 1) + "</a></li>"
   }
 
   pages_id.innerHTML = line
@@ -76,20 +76,20 @@ function writeData(data, start=0){
   size = size + start
 
   // cria html com os dados vindos da api
-  let table = $("#id_tbody");
+  let data_id = $("#data_id")
   linha = ""
   for (var i = start; i < size; i++) {
     linha += "\
-      <tr class=\"\"> \
-        <th scope=\"row\">" + data[i].id + "</th> \
-        <td onclick='openModal(" + JSON.stringify(data[i]) + ")'>" + data[i].title + "</td> \
-        <td onclick='openModal(" + JSON.stringify(data[i]) + ")'>" + data[i].categories + "</td> \
-        <td onclick='openModal(" + JSON.stringify(data[i]) + ")'>" + data[i].content + "</td> \
-        <td onclick='openModal(" + JSON.stringify(data[i]) + ")'>" + data[i].version + "</td> \
-        <td onclick='deletePost(" + JSON.stringify(data[i]) + ")'><i class=\"bi bi-x-lg\"></i></i></td> \
-      </tr>\n"
+    <div class=\"card text-bg-secondary mb-3\" onclick='openModal(" + JSON.stringify(data[i]) + ")' style=\"max-width: 100%;\">\
+				<div class=\"card-header\">" + data[i].categories + "</div>\
+				<div class=\"card-body\">\
+					<h5 class=\"card-title\">" + data[i].title + "</h5>\
+					<p class=\"card-text\">" + data[i].content + "</p>\
+				</div>\
+			</div>\
+    "
   }
-  table.html(linha);
+  data_id.html(linha);
   writePage(data_length)
 }
 
