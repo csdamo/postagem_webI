@@ -14,6 +14,10 @@ body {
     text-align: center;
 }
 
+.main {
+    max-width:70%;
+}
+
 /*Page Menu Length*/ 
 #length_menu {
     position:relative;
@@ -77,5 +81,5 @@ body {
 }
 
 .hover_color:hover {
-    background-color: #a3a3a3;
+    background-color: #8a8a8a;
 }

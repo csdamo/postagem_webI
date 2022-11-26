@@ -58,7 +58,7 @@ function writePage(data_length){
   let line = ""
   
   for (var i = 0; i < pages; i++) {
-    line += "<li class=\"page-item\" id=\"" + i + " \"><a onclick='changePage(" + i + ")' class=\"page-link\" href=\"#pages_id\">" + (i + 1) + "</a></li>"
+    line += "<li class=\"page-item\" id=\"page_" + i + " \"><a onclick='changePage(" + i + ")' class=\"page-link\" href=\"#pages_id\" >" + (i + 1) + "</a></li>"
   }
 
   pages_id.innerHTML = line
