@@ -5,6 +5,7 @@ p, label {
 
 body {
     margin: 0;
+    background-color: #FFFAFA;
 }
 
 .cabecalho {
@@ -65,4 +66,16 @@ body {
 .page-link:hover {
     color: #ff5900;
     background-color: #ffb48b;
+}
+
+.page_selected {
+    background-color: #adadad;
+}
+
+.click {
+    cursor: pointer;
+}
+
+.hover_color:hover {
+    background-color: #a3a3a3;
 }

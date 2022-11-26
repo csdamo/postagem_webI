@@ -58,7 +58,7 @@ function writePage(data_length){
   let line = ""
   
   for (var i = 0; i < pages; i++) {
-    line += "<li class=\"page-item\"><a onclick='changePage(" + i + ")' id=\"" + i + " \" class=\"page-link\" href=\"#pages_id\">" + (i + 1) + "</a></li>"
+    line += "<li class=\"page-item\" id=\"" + i + " \"><a onclick='changePage(" + i + ")' class=\"page-link\" href=\"#pages_id\">" + (i + 1) + "</a></li>"
   }
 
   pages_id.innerHTML = line
@@ -75,15 +75,21 @@ function writeData(data, start=0){
   let size = ((length_id < len_data) ? length_id : len_data); // previne que o tamanho seja maior do que a quantidade de dados
   size = size + start
 
+  const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+  color_hexa = genRanHex(3);
+
   // cria html com os dados vindos da api
   let data_id = $("#data_id")
   linha = ""
   for (var i = start; i < size; i++) {
     linha += "\
-    <div class=\"card text-bg-secondary mb-3\" onclick='openModal(" + JSON.stringify(data[i]) + ")' style=\"max-width: 100%;\">\
-				<div class=\"card-header\">" + data[i].categories + "</div>\
-				<div class=\"card-body\">\
-					<h5 class=\"card-title\">" + data[i].title + "</h5>\
+    <div class=\"card text-bg-secondary mb-3\" style=\"max-width: 100%;\">\
+				<div class=\"card-header d-flex justify-content-between \"> \
+          <p class=\"\">" + data[i].categories + "</p> \
+          <i class=\"bi bi-x-lg click\" onclick='deletePost(" + JSON.stringify(data[i]) + ")'></i> \
+        </div>\
+        <div class=\"card-body click hover_color\" onclick='openModal(" + JSON.stringify(data[i]) + ")'>\
+					<h5 class=\"card-title\"><span style =\"color:#" + genRanHex(3) + "\"><i class=\"bi bi-film\"></i></span> " + data[i].title + "</h5>\
 					<p class=\"card-text\">" + data[i].content + "</p>\
 				</div>\
 			</div>\
@@ -172,16 +178,13 @@ function changePage(page){
   let method="GET";
   let length_id =  $("#length_id").val()
   let start = page * parseInt(length_id);
-
   getPosts(post_id, method, start)
 }
-
 
 $("#search_id").bind('change keyup', function() {
   // chama api quando usuário digita no campo de pesquisa
   getPosts()
 })
-
 
 $("#length_id").on("change", function(){
   // chama api quando usuário seleciona quantidade de registros por página
