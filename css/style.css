@@ -72,8 +72,9 @@ body {
     background-color: #ffb48b;
 }
 
-.page_selected {
-    background-color: #adadad;
+.page_selected a{
+    background-color: #e55000;
+    color: aliceblue;
 }
 
 .click {

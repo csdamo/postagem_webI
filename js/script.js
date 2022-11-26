@@ -57,8 +57,24 @@ function writePage(data_length){
   let pages_id  =  document.getElementById("pages_id");  // elemento html onde serão impressos as páginas
   let line = ""
   
+  let page_selected = $("#page_selected").val() // valor da página selecionada
+  let class_page_selected = ""
+  
   for (var i = 0; i < pages; i++) {
-    line += "<li class=\"page-item\" id=\"page_" + i + " \"><a onclick='changePage(" + i + ")' class=\"page-link\" href=\"#pages_id\" >" + (i + 1) + "</a></li>"
+    
+    if(i == page_selected){
+      class_page_selected = "page_selected"
+    }
+    else if(page_selected == null && i==0){
+      class_page_selected = "page_selected"
+    }
+    else{
+      class_page_selected = ""
+    }
+
+    line += "<li class=\"page-item "+ class_page_selected +"\" >\
+                <a id=\"page_" + i + "\" onclick='changePage(" + i + ")' class=\"page-link\" href=\"#pages_id\" >" + (i + 1) + "</a> \
+            </li>"
   }
 
   pages_id.innerHTML = line
@@ -178,6 +194,9 @@ function changePage(page){
   let method="GET";
   let length_id =  $("#length_id").val()
   let start = page * parseInt(length_id);
+
+  $("#page_selected").val(page)
+
   getPosts(post_id, method, start)
 }
 
