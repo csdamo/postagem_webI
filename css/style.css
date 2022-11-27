@@ -62,6 +62,10 @@ body {
     color: aliceblue; 
  }
 
+ .not_visible {
+    display: none;
+ }
+
 /* Pagination */
 .page-link {
     color: #e55000;

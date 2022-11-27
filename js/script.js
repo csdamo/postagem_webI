@@ -45,9 +45,21 @@ $("#bnt_openModalPost").click(function(event){
   $("#title_id").val("");
   $("#categories_id").val("");
   $("#content_id").val("");
-
+  buttonDelete()
   $('#formMessageModal').modal('show');
 });
+
+function buttonDelete(){
+  // mostra botão de delete apenas dentro do formulário de edição
+  let id = $("#item_id").val();
+  let button_delete = $("#button_delete")
+  if(id){
+    button_delete.removeClass("not_visible")
+  }
+  else{
+    button_delete.addClass("not_visible")
+  }
+} 
 
 function writePage(data_length){  
   // escreve as páginas na tela
@@ -102,7 +114,7 @@ function writeData(data, start=0){
     <div class=\"card text-bg-secondary mb-3\" style=\"max-width: 100%;\">\
 				<div class=\"card-header d-flex justify-content-between \"> \
           <p class=\"\">" + data[i].categories + "</p> \
-          <i class=\"bi bi-x-lg click\" onclick='deletePost(" + JSON.stringify(data[i]) + ")'></i> \
+          <i class=\"bi bi-x-lg click\" onclick='deletePost(" + JSON.stringify(data[i].id) + ")'></i> \
         </div>\
         <div class=\"card-body click hover_color\" onclick='openModal(" + JSON.stringify(data[i]) + ")'>\
 					<h5 class=\"card-title\"><span style =\"color:#" + genRanHex(3) + "\"><i class=\"bi bi-film\"></i></span> " + data[i].title + "</h5>\
@@ -161,12 +173,15 @@ function openModal(post) {
   $("#title_id").val(post.title);
   $("#categories_id").val(post.categories);
   $("#content_id").val(post.content);
+
+  buttonDelete()
+
   $('#formMessageModal').modal('show');
 }
 
-function deletePost(post){
+function deletePost(post_id){
   // abre modal de delete
-  $("#post_id").val(post.id)  // preenche valor do imput oculto da modal de delete
+  $("#post_id").val(post_id)  // preenche valor do imput oculto da modal de delete
   $("#confirmModal").modal('show');
 };
 
@@ -185,6 +200,14 @@ $("#confirmOk").on("click", function(){
 $("#confirmCancel").on("click", function(){
   // cancela delete
   $("#confirmModal").modal('hide');
+});
+
+$("#button_delete").on("click", function(){
+  // deleta elemento de dentro da modal de formulário quando edição
+  let id = $("#item_id").val();
+  $('#formMessageModal').modal('hide');
+  deletePost(id)
+  
 });
 
 function changePage(page){

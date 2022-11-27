@@ -17,7 +17,6 @@
 	<!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="./images/popcorn.ico">
 
-	
 </head>
 <body>
 	<header>
@@ -91,7 +90,8 @@
 							<label for="content_id" class="col-form-label">Mensagem:</label>
 							<textarea class="form-control" id="content_id" name="content" placeholder="Coloque o seu comentário aqui" required></textarea>
 						</div>
-						<div class="modal-footer">
+						<div class="modal-footer" id="buttons_modal"></button>
+							<button type="button" id="button_delete" class="btn btn-danger not_visible">Deletar <i class="bi bi-trash3"></i></button>
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
 							<button type="submit" id="submitButton" class="btn button_orange">Enviar <i class="bi bi-send"></i></button>
 						</div>
