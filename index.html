@@ -25,9 +25,9 @@
 	
 	<main class="container-fluid main">
 		<section class="container-fluid text-center" id="user_options">
-			<div class="row row-cols-3 d-flex align-items-center">
-				<div class="col-sm-12 col-md-4 form-group row" id="length_menu">	
-					<label class="col-sm-6 col-form-label" for="length_id">Rregistros por página</label>
+			<div class="row row-cols-3 d-flex align-items-center justify-content-between">
+				<div class="col-sm-12 col-md-4 col-lg-4 form-group row" id="length_menu">	
+					<label class="col-6 col-form-label" for="length_id">Rregistros por página</label>
 					<select id="length_id" name="length select" class="form-select">
 						<option class="option" value="5">5</option>
 						<option class="option" value="10">10</option>
@@ -35,12 +35,12 @@
 						<option class="option" value="50">50</option>
 					</select> 
 				</div>
-				<div class="col-sm-12 col-md-4" id="button_add">
+				<div class="col-sm-12 col-md-4 col-lg-4" id="button_add">
 					<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#formMessageModal" id="bnt_openModalPost" data-bs-whatever="@mdo"> 
 						<i class="bi bi-plus-circle-fill" id="plus"></i>
 					</button>
 				</div>
-				<div class="col-sm-12 col-md-4">
+				<div class="col-sm-12 col-md-4 col-lg-4">
 					<div class="d-flex form-inputs option_form" id="search_form_div">
 						<input class="form-control" id="search_id" name="search" placeholder="Pesquisar...">
 						<i class="bi bi-search"></i>
