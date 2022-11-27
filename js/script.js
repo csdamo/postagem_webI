@@ -3,7 +3,7 @@ window.onload = function(){
   getPosts();
 
 }
-
+  
 $("#form_id").submit(function(event){
   // envia formulário
 
@@ -30,6 +30,8 @@ $("#form_id").submit(function(event){
   }
 
   let form_data = JSON.stringify(body);
+  
+  cleanPageSelected()
 
   getPosts(post_id, request_method, 0, 0, form_data)
   $('#formMessageModal').modal('hide');
@@ -49,17 +51,23 @@ $("#bnt_openModalPost").click(function(event){
   $('#formMessageModal').modal('show');
 });
 
-function buttonDelete(){
-  // mostra botão de delete apenas dentro do formulário de edição
-  let id = $("#item_id").val();
-  let button_delete = $("#button_delete")
-  if(id){
-    button_delete.removeClass("not_visible")
-  }
-  else{
-    button_delete.addClass("not_visible")
-  }
-} 
+function cleanPageSelected(){
+  // limpa input oculto que armazena página selecionada
+  $("#page_selected").val("")
+}
+
+function changePage(page){
+  // chama api quando usuário seleciona uma página
+
+  let post_id = -1;
+  let method="GET";
+  let length_id =  $("#length_id").val()
+  let start = page * parseInt(length_id);
+
+  $("#page_selected").val(page)
+
+  getPosts(post_id, method, start)
+}
 
 function writePage(data_length){  
   // escreve as páginas na tela
@@ -189,9 +197,8 @@ $("#confirmOk").on("click", function(){
   // confirma delete
   let post_id = $("#post_id").val()
   let request_method = "DELETE";
+  cleanPageSelected()
   getPosts(post_id, request_method)
-
-  
   $("#confirmModal").modal('hide');
   console.log("Deletado com sucesso")
   getPosts()
@@ -202,6 +209,18 @@ $("#confirmCancel").on("click", function(){
   $("#confirmModal").modal('hide');
 });
 
+function buttonDelete(){
+  // mostra botão de delete apenas dentro do formulário de edição
+  let id = $("#item_id").val();
+  let button_delete = $("#button_delete")
+  if(id){
+    button_delete.removeClass("not_visible")
+  }
+  else{
+    button_delete.addClass("not_visible")
+  }
+} 
+
 $("#button_delete").on("click", function(){
   // deleta elemento de dentro da modal de formulário quando edição
   let id = $("#item_id").val();
@@ -210,25 +229,14 @@ $("#button_delete").on("click", function(){
   
 });
 
-function changePage(page){
-  // chama api quando usuário seleciona uma página
-
-  let post_id = -1;
-  let method="GET";
-  let length_id =  $("#length_id").val()
-  let start = page * parseInt(length_id);
-
-  $("#page_selected").val(page)
-
-  getPosts(post_id, method, start)
-}
-
 $("#search_id").bind('change keyup', function() {
   // chama api quando usuário digita no campo de pesquisa
+  cleanPageSelected()
   getPosts()
 })
 
 $("#length_id").on("change", function(){
   // chama api quando usuário seleciona quantidade de registros por página
+  cleanPageSelected()
   getPosts();
 })
