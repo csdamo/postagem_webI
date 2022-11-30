@@ -122,7 +122,10 @@ function writeData(data, start=0){
     <div class=\"card text-bg-secondary mb-3\" style=\"max-width: 100%;\">\
 				<div class=\"card-header d-flex justify-content-between \"> \
           <p class=\"\">" + data[i].categories + "</p> \
-          <i class=\"bi bi-x-lg click\" onclick='deletePost(" + JSON.stringify(data[i].id) + ")'></i> \
+          <div> \
+            <i class=\"bi bi-pencil-square click\" onclick='openModal(" + JSON.stringify(data[i]) + ")'></i> \
+            <i class=\"bi bi-trash click\" onclick='deletePost(" + JSON.stringify(data[i].id) + ")'></i> \
+          </div>\
         </div>\
         <div class=\"card-body click hover_color\" onclick='openModal(" + JSON.stringify(data[i]) + ")'>\
 					<h5 class=\"card-title\"><span style =\"color:#" + genRanHex(3) + "\"><i class=\"bi bi-film\"></i></span> " + data[i].title + "</h5>\

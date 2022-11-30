@@ -20,17 +20,33 @@
 </head>
 <body>
 	<header>
-		<a href="index.html" class="cabecalho">
-			<i class="fa-solid fa-house fa-xl" color="white"></i>
-		</a>
-
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Início</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarScroll">
+				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+					<li><a class="nav-link" href="http://redatorademerda.com.br/" target="_blank">Filmes Perturbadores</a></li>
+					<li><a class="nav-link" href="https://www.youtube.com/@getrocombr" target="_blank">Filmes de Terror</a></li>
+					<li><a class="nav-link" href="https://www.youtube.com/c/GustavoCruz/videos" target="_blank">Análise Sofisticada</a></li>
+				</ul>
+				<div class="col-sm-12 col-md-4 col-lg-4">
+					<div class="d-flex form-inputs option_form" id="search_form_div">
+						<input class="form-control" id="search_id" name="search" placeholder="Pesquisar...">
+						<i class="bi bi-search"></i>
+					</div> 
+				</div>
+			</div>
+		</nav>
 	</header>
 	
 	<main class="container-fluid main">
 		<section class="container-fluid text-center" id="user_options">
 			<div class="row  d-flex align-items-center justify-content-between">
 				<div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center justify-content-between" id="length_menu">	
-					<label class="col-6 col-form-label" for="length_id">Rregistros por página</label>
+					<label class="col-6 col-form-label" for="length_id">Registros por página</label>
 					<select id="length_id" name="length select" class="form-select">
 						<option class="option" value="5">5</option>
 						<option class="option" value="10">10</option>
@@ -42,12 +58,6 @@
 					<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#formMessageModal" id="bnt_openModalPost" data-bs-whatever="@mdo"> 
 						<i class="bi bi-plus-circle-fill" id="plus"></i>
 					</button>
-				</div>
-				<div class="col-sm-12 col-md-4 col-lg-4">
-					<div class="d-flex form-inputs option_form" id="search_form_div">
-						<input class="form-control" id="search_id" name="search" placeholder="Pesquisar...">
-						<i class="bi bi-search"></i>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -121,9 +131,9 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container-fluid footer">
 		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-		  <ul class="nav col-md-6 justify-content-center">
+		  <ul class="nav col-12 justify-content-center">
 			<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Chaianne R. F. Rocha</a></li>
 			<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Claudia A. Hobus</a></li>
 			<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Cristiane S. Damo</a></li>

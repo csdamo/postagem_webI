@@ -8,14 +8,9 @@ body {
     background-color: #FFFAFA;
 }
 
-.cabecalho {
-    color: white;
-    width: 133px;
-    text-align: center;
-}
-
 .main {
     max-width:50%;
+    margin-top: 60px;
 }
 
 /*Page Menu Length*/ 
@@ -87,4 +82,8 @@ body {
 
 .hover_color:hover {
     background-color: #8a8a8a;
+}
+
+.footer {
+    max-width:50%;
 }
