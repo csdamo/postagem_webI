@@ -13,6 +13,20 @@ body {
     margin-top: 60px;
 }
 
+@media (max-width: 600px){
+    .main {
+        max-width:85%;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 900px){
+    .main {
+        max-width:75%;
+        margin-top: 60px;
+    }
+}
+
 /*Page Menu Length*/ 
 #length_menu {
     position:relative;
@@ -23,7 +37,7 @@ body {
     height: 40px;
 }
 
-/* Serach Field */
+/* Search Field */
 #search_form_div {
     position:relative;
 }
